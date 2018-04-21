@@ -1,3 +1,4 @@
+/.idea
 *.rbc
 capybara-*.html
 .rspec
@@ -45,6 +46,3 @@ bower.json
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-# Ignore rubymine
-/.idea
