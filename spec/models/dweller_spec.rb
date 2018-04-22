@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Dweller, type: :model do
-    #FIXME: create this objects at another file
-    it "should have at least one house" do
-        house = House.new(name: "Vikings", description: "vida loka")
-        d = Dweller.new(name: "carlos", house: house)
+    let(:house) { build(:house) }
+    let(:dweller) { build(:dweller) }
 
-        expect(d.house).not_to be_nil
+    it { should have_many(:bills).through(:dweller_bills) }
+    
+    it "should have at least one house" do
+    	dweller.house = house
+
+        expect(dweller.house).not_to be_nil
     end
 end

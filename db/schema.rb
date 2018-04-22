@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_232234) do
+ActiveRecord::Schema.define(version: 2018_04_22_022035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(version: 2018_04_21_232234) do
     t.datetime "updated_at", null: false
     t.index ["dweller_id"], name: "index_bills_on_dweller_id"
     t.index ["house_id"], name: "index_bills_on_house_id"
+  end
+
+  create_table "dweller_bills", force: :cascade do |t|
+    t.decimal "value"
+    t.boolean "paid"
+    t.bigint "dweller_id"
+    t.bigint "bill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "responsible_id"
+    t.index ["bill_id"], name: "index_dweller_bills_on_bill_id"
+    t.index ["dweller_id"], name: "index_dweller_bills_on_dweller_id"
   end
 
   create_table "dwellers", force: :cascade do |t|
@@ -46,4 +58,6 @@ ActiveRecord::Schema.define(version: 2018_04_21_232234) do
 
   add_foreign_key "bills", "dwellers"
   add_foreign_key "bills", "houses"
+  add_foreign_key "dweller_bills", "bills"
+  add_foreign_key "dweller_bills", "dwellers"
 end
