@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_22_022035) do
+ActiveRecord::Schema.define(version: 2018_04_21_235806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bills", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.boolean "sporadic"
-    t.date "maturity"
+    t.boolean "sporadic", null: false
+    t.date "maturity", null: false
     t.boolean "active"
     t.bigint "dweller_id"
     t.bigint "house_id"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 2018_04_22_022035) do
     t.bigint "bill_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "responsible_id"
     t.index ["bill_id"], name: "index_dweller_bills_on_bill_id"
     t.index ["dweller_id"], name: "index_dweller_bills_on_dweller_id"
   end
