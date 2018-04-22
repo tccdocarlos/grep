@@ -3,5 +3,7 @@ rvm:
   - 2.5.1
 before_script:
   - gem install bundler
+  - psql -c 'create database grep_test;' -U postgres
 script:
+  - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
