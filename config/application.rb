@@ -29,8 +29,5 @@ module Grep
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
-    config.eager_load_paths << Rails.root.join('app/services/')
-    #config.autoload_paths << Rais.root.join("app/services/bill")
   end
 end
