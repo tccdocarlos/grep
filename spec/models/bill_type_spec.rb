@@ -15,11 +15,12 @@ RSpec.describe BillType, type: :model do
     end
 
     it "should return the right value" do
+        bill_type.value = 30
         db1 = BillSpliting.create(value: 10, dweller: dweller, bill_type: bill_type)
         db2 = BillSpliting.create(value: 10, dweller: dweller, bill_type: bill_type)
         db3 = BillSpliting.create(value: 10, dweller: dweller, bill_type: bill_type)
 
-        expect(bill_type.value).to eq 30
+        expect(bill_type.total_value).to eq bill_type.value
     end
 
     it "should have the right dwellers" do

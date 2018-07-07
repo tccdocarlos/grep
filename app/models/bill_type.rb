@@ -6,7 +6,7 @@ class BillType < ApplicationRecord
 
     accepts_nested_attributes_for :bill_splitings, reject_if: :all_blank, allow_destroy: true
 
-    def value
+    def total_value
         BillSpliting.where(bill_type: self).sum(:value)
     end
 end
