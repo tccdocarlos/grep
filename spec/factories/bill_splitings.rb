@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :bill_spliting do
     value 10
-    paid false
     dweller
-    bill
+    bill_type
   end
 end

@@ -3,4 +3,5 @@
 <%= render 'form', bill_type: @bill_type %>
 
 <%= link_to 'Show', @bill_type %> |
-<%= link_to 'Back', bill_types_path %>
+<%= link_to 'Back', bill_types_path %> |
+<%= link_to 'Split', bill_types_split_path(@bill_type) %>

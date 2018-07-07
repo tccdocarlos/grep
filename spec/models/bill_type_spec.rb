@@ -6,12 +6,18 @@ RSpec.describe BillType, type: :model do
     let(:dweller2) { build(:dweller) }
     let(:dweller3) { build(:dweller) }
     let(:bill_type) { create(:bill_type) }
+    let(:bill_spliting) { create(:bill_spliting) }
 
     it { should have_many(:dwellers).through(:bill_splitings) }
     
     it "has one responsible" do
         bill_type.responsible = dweller
         expect(bill_type.responsible).to eq dweller
+    end
+
+    it 'accepts bills spliting' do
+        BillType.create(name: 'light', maturity: Date.today, responsible: dweller,
+                        house: house, value: 10, bill_splitings: [bill_spliting])
     end
 
     it "should return the right value" do

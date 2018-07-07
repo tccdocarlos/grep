@@ -1,15 +1,20 @@
 class BillTypesController < ApplicationController
-  before_action :set_bill_type, only: [:show, :edit, :update, :destroy]
+  before_action :set_bill_type, only: [:show, :edit, :update, :destroy, :split]
 
   # GET /bill_types
   # GET /bill_types.json
   def index
     @bill_types = BillType.all
+    @dwellers = Dweller.all
   end
 
   # GET /bill_types/1
   # GET /bill_types/1.json
   def show
+  end
+
+  # GET /bill_types/1/split
+  def split
   end
 
   # GET /bill_types/new
@@ -24,6 +29,7 @@ class BillTypesController < ApplicationController
   # POST /bill_types
   # POST /bill_types.json
   def create
+    puts "############ #{bill_type_params}"
     #FIXME
     responsible = Dweller.first
     @bill_type = BillType::Create.new(responsible, bill_type_params).call()
