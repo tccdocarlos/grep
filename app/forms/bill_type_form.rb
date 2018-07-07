@@ -6,7 +6,7 @@ class BillTypeForm
     attr_accessor :name, :description, :maturity, :value,
                   :dweller_id, :house_id, :bill_splitings_attributes
 
-    validates_presence_of :name, :maturity, :value, :dweller_id, :house_id
+    #validates_presence_of :name, :maturity, :value, :dweller_id, :house_id
 
 
     #validates @dweller_bills_attributes[:value], numericality: true

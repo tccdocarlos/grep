@@ -10,7 +10,9 @@ class BillType::Create
     def call
         # who creates the bill is the responsible for it
         @params[:dweller_id] = @user.id
+        @params[:maturity] = Date.today - 2
         bill_type_form = BillTypeForm.new(@params)
+
         
         if bill_type_form.valid?
             BillType.create(@params)
