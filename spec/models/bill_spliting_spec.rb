@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe DwellerBill, type: :model do
+RSpec.describe BillSpliting, type: :model do
     let(:house) { build(:house) }
     let(:dweller) { build(:dweller) }
     let(:bill) { build(:bill) }
-    let(:dweller_bill) { build(:dweller_bill) }
+    let(:bill_spliting) { build(:bill_spliting) }
 end

@@ -4,7 +4,7 @@ RSpec.describe Dweller, type: :model do
     let(:house) { build(:house) }
     let(:dweller) { build(:dweller) }
 
-    it { should have_many(:bills).through(:dweller_bills) }
+    it { should have_many(:bill_types).through(:bill_splitings) }
     
     it "should have at least one house" do
     	dweller.house = house

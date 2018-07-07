@@ -1,4 +1,4 @@
-class Bill::Create
+class BillType::Create
     class NotValidEntryRecord < StandardError; end
     
     def initialize(user, params)
@@ -10,12 +10,12 @@ class Bill::Create
     def call
         # who creates the bill is the responsible for it
         @params[:dweller_id] = @user.id
-        bill_form = BillForm.new(@params)
+        bill_type_form = BillTypeForm.new(@params)
         
-        if bill_form.valid?
-            Bill.create(@params)
+        if bill_type_form.valid?
+            BillType.create(@params)
         else
-            raise(NotValidEntryRecord, bill_form.errors.full_messages.to_sentence)
+            raise(NotValidEntryRecord, bill_type_form.errors.full_messages.to_sentence)
         end
     end
 end

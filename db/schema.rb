@@ -15,29 +15,27 @@ ActiveRecord::Schema.define(version: 2018_04_21_235806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bills", force: :cascade do |t|
+  create_table "bill_splitings", force: :cascade do |t|
+    t.decimal "value"
+    t.bigint "dweller_id"
+    t.bigint "bill_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_type_id"], name: "index_bill_splitings_on_bill_type_id"
+    t.index ["dweller_id"], name: "index_bill_splitings_on_dweller_id"
+  end
+
+  create_table "bill_types", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.boolean "sporadic", null: false
     t.date "maturity", null: false
-    t.boolean "active"
+    t.decimal "value"
     t.bigint "dweller_id"
     t.bigint "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["dweller_id"], name: "index_bills_on_dweller_id"
-    t.index ["house_id"], name: "index_bills_on_house_id"
-  end
-
-  create_table "dweller_bills", force: :cascade do |t|
-    t.decimal "value"
-    t.boolean "paid"
-    t.bigint "dweller_id"
-    t.bigint "bill_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bill_id"], name: "index_dweller_bills_on_bill_id"
-    t.index ["dweller_id"], name: "index_dweller_bills_on_dweller_id"
+    t.index ["dweller_id"], name: "index_bill_types_on_dweller_id"
+    t.index ["house_id"], name: "index_bill_types_on_house_id"
   end
 
   create_table "dwellers", force: :cascade do |t|
@@ -55,8 +53,8 @@ ActiveRecord::Schema.define(version: 2018_04_21_235806) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bills", "dwellers"
-  add_foreign_key "bills", "houses"
-  add_foreign_key "dweller_bills", "bills"
-  add_foreign_key "dweller_bills", "dwellers"
+  add_foreign_key "bill_splitings", "bill_types"
+  add_foreign_key "bill_splitings", "dwellers"
+  add_foreign_key "bill_types", "dwellers"
+  add_foreign_key "bill_types", "houses"
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :dweller_bill do
+  factory :bill_spliting do
     value 10
     paid false
     dweller
