@@ -1,0 +1,21 @@
+<%= form_for([@bill_spliting.bill_type, @bill_spliting]) do |f| %>
+  <% if @bill_spliting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_spliting.errors.count, "error") %> prohibited this bill_spliting from being saved:</h2>
+
+      <ul>
+      <% @bill_spliting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @bill_spliting.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_type_bill_spliting_path(@bill_spliting.bill_type, @bill_spliting) %> |
+<%= link_to 'Back', bill_type_bill_splitings_path(@bill_spliting.bill_type) %>
