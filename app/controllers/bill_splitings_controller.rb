@@ -25,15 +25,18 @@ class BillSplitingsController < ApplicationController
     dweller = Dweller.first
     params = bill_spliting_params
     params[:dweller] = dweller
-    @bill_spliting = @bill_type.bill_splitings.build(params)
+    #@bill_spliting = @bill_type.bill_splitings.build(params)
+    @bill_spliting = BillSpliting::Create.new(@bill_type, params).call()
 
     puts "######## #{params}"
 
-    if @bill_spliting.save
-      redirect_to([@bill_spliting.bill_type, @bill_spliting], notice: 'Bill spliting was successfully created.')
+    if @bill_spliting
+      redirect_to(bill_type_bill_splitings_path(@bill_type), notice: 'Bill spliting was successfully created.')
     else
       render action: 'new'
     end
+
+
   end
 
   # PUT bill_types/1/bill_splitings/1

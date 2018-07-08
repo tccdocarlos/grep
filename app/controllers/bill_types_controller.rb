@@ -35,9 +35,10 @@ class BillTypesController < ApplicationController
     @bill_type = BillType::Create.new(responsible, bill_type_params).call()
 
     if @bill_type
-      redirect_to '/bill_types/'
+      #redirect_to '/bill_types/'
+      redirect_to(bill_type_path(@bill_type), notice: 'Bill spliting was successfully created.')
     else
-      render 'error'
+      render action: 'new'
     end
   end
 
