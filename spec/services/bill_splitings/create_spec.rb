@@ -11,4 +11,12 @@ RSpec.describe BillSpliting::Create do
 
         expect(BillSpliting.count).to eq 1
     end
+
+    it 'creates a bill spliting with bill type id' do    	
+    	params[:dweller_id] = dweller.id
+        s = BillSpliting::Create.new(bill_type, params).call()
+
+        expect(BillSpliting.count).to eq 1
+        expect(BillSpliting.last.dweller).to eq dweller
+    end
 end

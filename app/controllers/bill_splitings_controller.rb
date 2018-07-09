@@ -13,6 +13,10 @@ class BillSplitingsController < ApplicationController
 
   # GET bill_types/1/bill_splitings/new
   def new
+    
+    #TODO: just dwellers from the right house
+    @dwellers = Dweller.all
+    
     @bill_spliting = @bill_type.bill_splitings.build
   end
 
@@ -22,11 +26,11 @@ class BillSplitingsController < ApplicationController
 
   # POST bill_types/1/bill_splitings
   def create
-    dweller = Dweller.first
-    params = bill_spliting_params
-    params[:dweller] = dweller
+    #dweller = Dweller.first
+    #params = bill_spliting_params
+    #params[:dweller] = dweller
     #@bill_spliting = @bill_type.bill_splitings.build(params)
-    @bill_spliting = BillSpliting::Create.new(@bill_type, params).call()
+    @bill_spliting = BillSpliting::Create.new(@bill_type, bill_spliting_params).call()
 
     puts "######## #{params}"
 
@@ -67,6 +71,6 @@ class BillSplitingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bill_spliting_params
-      params.require(:bill_spliting).permit(:value)
+      params.require(:bill_spliting).permit(:value, :dweller_id)
     end
 end

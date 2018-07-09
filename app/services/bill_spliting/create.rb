@@ -8,6 +8,13 @@ class BillSpliting::Create
 
 	def call
 		@params[:bill_type] = @bill_type
+
+		# TODO: remake this
+		if(@params.key?(:dweller_id))
+			@params[:dweller] = Dweller.find(@params[:dweller_id])
+			@params.delete(:dweller_id)
+		end
+	
 		bill_spliting_form = BillSplitingForm.new(@params)
 
 		if bill_spliting_form.valid?
