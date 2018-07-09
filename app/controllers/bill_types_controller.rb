@@ -29,14 +29,19 @@ class BillTypesController < ApplicationController
   # POST /bill_types
   # POST /bill_types.json
   def create
-    puts "############ #{bill_type_params}"
     #FIXME
     responsible = Dweller.first
-    @bill_type = BillType::Create.new(responsible, bill_type_params).call()
+    
+    params = bill_type_params
+    
+    params[:house_id] = House.first.id
+    @bill_type = BillType::Create.new(responsible, params).call()
+
+    puts "############ #{@bill_type.name}"
 
     if @bill_type
       #redirect_to '/bill_types/'
-      redirect_to(bill_type_path(@bill_type), notice: 'Bill spliting was successfully created.')
+      redirect_to(bill_types_path(@bill_type), notice: 'Bill spliting was successfully created.')
     else
       render action: 'new'
     end
@@ -74,6 +79,6 @@ class BillTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_type_params
-      params.require(:bill_type).permit(:name, :description, :maturity, :house_id, :value)
+      params.require(:bill_type).permit(:name, :description, :maturity, :value)
     end
 end
