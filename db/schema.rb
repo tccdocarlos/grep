@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_235806) do
+ActiveRecord::Schema.define(version: 2018_07_10_191118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_04_21_235806) do
     t.bigint "bill_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "percentage_value"
     t.index ["bill_type_id"], name: "index_bill_splitings_on_bill_type_id"
     t.index ["dweller_id"], name: "index_bill_splitings_on_dweller_id"
   end

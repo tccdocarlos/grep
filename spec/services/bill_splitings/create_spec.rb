@@ -19,4 +19,23 @@ RSpec.describe BillSpliting::Create do
         expect(BillSpliting.count).to eq 1
         expect(BillSpliting.last.dweller).to eq dweller
     end
+
+    it 'creates a bill with a valid percentage value' do
+        params[:dweller] = dweller
+        params[:percentage_value] = 0.6
+
+        s = BillSpliting::Create.new(bill_type, params).call()
+
+        last_bill = BillSpliting.last
+
+        expect(last_bill.percentage_value * last_bill.bill_type.value).to eq bill_type.value * 0.6
+    end
+
+    it 'doesnt create a bill with invalid percentage value' do
+        params[:dweller] = dweller
+        params[:percentage_value] = 1.2
+
+        expect{ BillSpliting::Create.new(bill_type, params).call() }.to raise_error(BillSpliting::Create::NotValidEntryRecord)
+
+    end
 end
