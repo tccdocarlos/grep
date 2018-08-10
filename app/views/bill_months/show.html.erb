@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @bill_month.month %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @bill_month.status %>
+</p>
+
+<p>
+  <strong>House:</strong>
+  <%= @bill_month.house %>
+</p>
+
+<%= link_to 'Edit', edit_bill_month_path(@bill_month) %> |
+<%= link_to 'Back', bill_months_path %>

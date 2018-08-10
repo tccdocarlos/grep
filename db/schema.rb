@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_14_214538) do
+ActiveRecord::Schema.define(version: 2018_08_10_170431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_months", force: :cascade do |t|
+    t.date "month"
+    t.integer "status"
+    t.bigint "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_bill_months_on_house_id"
+  end
 
   create_table "bill_splitings", force: :cascade do |t|
     t.decimal "value"
@@ -54,15 +63,7 @@ ActiveRecord::Schema.define(version: 2018_07_14_214538) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "month_bills", force: :cascade do |t|
-    t.date "month"
-    t.integer "status"
-    t.bigint "house_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["house_id"], name: "index_month_bills_on_house_id"
-  end
-
+  add_foreign_key "bill_months", "houses"
   add_foreign_key "bill_splitings", "bill_types"
   add_foreign_key "bill_splitings", "dwellers"
   add_foreign_key "bill_types", "dwellers"
