@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bills
   resources :bill_months
   resources :bill_types do
     resources :bill_splitings

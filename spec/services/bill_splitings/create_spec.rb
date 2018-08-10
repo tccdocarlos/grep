@@ -13,7 +13,7 @@ RSpec.describe BillSpliting::Create do
     end
 
     it 'creates a bill spliting with bill type id' do    	
-    	params[:dweller_id] = dweller.id
+    	  params[:dweller_id] = dweller.id
         s = BillSpliting::Create.new(bill_type, params).call()
 
         expect(BillSpliting.count).to eq 1

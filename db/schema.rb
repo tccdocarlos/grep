@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_170431) do
+ActiveRecord::Schema.define(version: 2018_08_10_171707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,19 @@ ActiveRecord::Schema.define(version: 2018_08_10_170431) do
     t.index ["house_id"], name: "index_bill_types_on_house_id"
   end
 
+  create_table "bills", force: :cascade do |t|
+    t.decimal "paid_value"
+    t.decimal "month_value"
+    t.datetime "paid_date"
+    t.datetime "maturity_date"
+    t.bigint "bill_month_id"
+    t.bigint "bill_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_month_id"], name: "index_bills_on_bill_month_id"
+    t.index ["bill_type_id"], name: "index_bills_on_bill_type_id"
+  end
+
   create_table "dwellers", force: :cascade do |t|
     t.string "name"
     t.bigint "house_id"
@@ -68,4 +81,6 @@ ActiveRecord::Schema.define(version: 2018_08_10_170431) do
   add_foreign_key "bill_splitings", "dwellers"
   add_foreign_key "bill_types", "dwellers"
   add_foreign_key "bill_types", "houses"
+  add_foreign_key "bills", "bill_months"
+  add_foreign_key "bills", "bill_types"
 end

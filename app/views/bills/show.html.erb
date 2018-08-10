@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Paid value:</strong>
+  <%= @bill.paid_value %>
+</p>
+
+<p>
+  <strong>Month value:</strong>
+  <%= @bill.month_value %>
+</p>
+
+<p>
+  <strong>Paid date:</strong>
+  <%= @bill.paid_date %>
+</p>
+
+<p>
+  <strong>Maturity date:</strong>
+  <%= @bill.maturity_date %>
+</p>
+
+<p>
+  <strong>Bill month:</strong>
+  <%= @bill.bill_month %>
+</p>
+
+<p>
+  <strong>Bill type:</strong>
+  <%= @bill.bill_type %>
+</p>
+
+<%= link_to 'Edit', edit_bill_path(@bill) %> |
+<%= link_to 'Back', bills_path %>
