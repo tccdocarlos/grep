@@ -1,0 +1,2 @@
+module BillApportionmentsHelper
+end

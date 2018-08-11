@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_10_171707) do
+ActiveRecord::Schema.define(version: 2018_08_11_195002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_apportionments", force: :cascade do |t|
+    t.bigint "bill_id"
+    t.decimal "value"
+    t.bigint "dweller_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bill_id"], name: "index_bill_apportionments_on_bill_id"
+    t.index ["dweller_id"], name: "index_bill_apportionments_on_dweller_id"
+  end
 
   create_table "bill_months", force: :cascade do |t|
     t.date "month"
@@ -76,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_08_10_171707) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "bill_apportionments", "bills"
+  add_foreign_key "bill_apportionments", "dwellers"
   add_foreign_key "bill_months", "houses"
   add_foreign_key "bill_splitings", "bill_types"
   add_foreign_key "bill_splitings", "dwellers"

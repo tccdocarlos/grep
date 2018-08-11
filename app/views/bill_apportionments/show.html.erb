@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Value:</b>
+  <%= @bill_apportionment.value %>
+</p>
+
+<p>
+  <b>Dweller:</b>
+  <%= @bill_apportionment.dweller %>
+</p>
+
+
+<%= link_to 'Edit', edit_bill_bill_apportionment_path(@bill_apportionment.bill, @bill_apportionment) %> |
+<%= link_to 'Back', bill_bill_apportionments_path(@bill_apportionment.bill) %>

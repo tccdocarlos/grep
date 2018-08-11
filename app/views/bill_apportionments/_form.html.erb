@@ -1,0 +1,25 @@
+<%= form_for([@bill_apportionment.bill, @bill_apportionment]) do |f| %>
+  <% if @bill_apportionment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill_apportionment.errors.count, "error") %> prohibited this bill_apportionment from being saved:</h2>
+
+      <ul>
+      <% @bill_apportionment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :dweller %><br />
+    <%= f.collection_select :dweller_id, @dwellers, :id, :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
