@@ -9,3 +9,4 @@
 
 House.create(name: "rep vikings", description: "vida loka")
 Dweller.create(name: "carlos", house: House.first)
+BillMonth.create(house: House.first, month: DateTime.now, status: 1)

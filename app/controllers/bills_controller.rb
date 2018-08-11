@@ -24,15 +24,16 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.json
   def create
-    @bill = Bill.new(bill_params)
+
+    @bill_service = Bill::Create.new(new_bill_params).call
 
     respond_to do |format|
-      if @bill.save
-        format.html { redirect_to @bill, notice: 'Bill was successfully created.' }
-        format.json { render :show, status: :created, location: @bill }
+      if @bill_service
+        format.html { redirect_to @bill_service, notice: 'Bill was successfully created.' }
+        format.json { render :show, status: :created, location: @bill_service }
       else
         format.html { render :new }
-        format.json { render json: @bill.errors, status: :unprocessable_entity }
+        format.json { render json: @bill_services, status: :unprocessable_entity }
       end
     end
   end
@@ -70,5 +71,34 @@ class BillsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
       params.require(:bill).permit(:paid_value, :month_value, :paid_date, :maturity_date, :bill_month_id, :bill_type_id)
+    end
+
+    #to convert dates to DateTime objects
+    def new_bill_params
+      new_params = bill_params
+      
+      for x in (1..5) do
+        #eval('new_params[:paid_date] = params[:bill]["paid_date(#{x}i)"].to_i ')
+        eval('new_params.delete("paid_date(#{x}i)")')
+      end
+
+      for x in (1..5) do
+        #eval('new_params[:maturity_date] = params[:bill]["maturity_date(#{x}i)"].to_i ')
+        eval('new_params.delete("maturity_date(#{x}i)")')
+      end
+
+      new_params[:paid_date] = DateTime.new(params[:bill]["paid_date(1i)"].to_i, 
+                                            params[:bill]["paid_date(2i)"].to_i, 
+                                            params[:bill]["paid_date(3i)"].to_i, 
+                                            params[:bill]["paid_date(4i)"].to_i, 
+                                            params[:bill]["paid_date(5i)"].to_i)
+
+      new_params[:maturity_date] = DateTime.new(params[:bill]["maturity_date(1i)"].to_i, 
+                                                params[:bill]["maturity_date(2i)"].to_i, 
+                                                params[:bill]["maturity_date(3i)"].to_i, 
+                                                params[:bill]["maturity_date(4i)"].to_i, 
+                                                params[:bill]["maturity_date(5i)"].to_i)
+
+      new_params
     end
 end
