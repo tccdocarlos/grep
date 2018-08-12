@@ -27,6 +27,7 @@
         <td><%= link_to 'Show', bill %></td>
         <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
         <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Apportionmnet', new_bill_bill_apportionment_path(bill) %></td>
       </tr>
     <% end %>
   </tbody>
