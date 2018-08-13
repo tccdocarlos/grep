@@ -5,19 +5,26 @@ RSpec.describe BillApportionment::Create do
     let(:dweller) { create(:dweller) }
 
     params = { value: 10 }
-    it 'creates a bill spliting' do
+    it 'creates a bill apportionment' do
         params[:dweller] = dweller
         s = BillApportionment::Create.new(bill, params).call()
 
         expect(BillApportionment.count).to eq 1
     end
 
-    it 'creates a bill spliting with bill type id' do     
+    it 'creates a bill apportionment with bill type id' do     
         params[:dweller_id] = dweller.id
         s = BillApportionment::Create.new(bill, params).call()
 
         expect(BillApportionment.count).to eq 1
         expect(BillApportionment.last.dweller).to eq dweller
+    end
+
+    it 'creates a bill apportionment with valid value' do
+        params[:dweller] = dweller
+        s = BillApportionment::Create.new(bill, params).call()
+
+        expect(BillApportionment.last.value).to eq 10
     end
 
     # it 'creates a bill with a valid percentage value' do
