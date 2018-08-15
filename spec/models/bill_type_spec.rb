@@ -9,6 +9,7 @@ RSpec.describe BillType, type: :model do
     let(:bill_spliting) { create(:bill_spliting) }
 
     it { should have_many(:dwellers).through(:bill_splitings) }
+    it { should have_many(:bills) }
     
     it "has one responsible" do
         bill_type.responsible = dweller
