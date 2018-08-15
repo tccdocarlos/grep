@@ -26,12 +26,15 @@ class BillApportionmentsController < ApplicationController
 
   # POST bills/1/bill_apportionments
   def create
-    @bill_apportionment = @bill.bill_apportionments.build(bill_apportionment_params)
-
-    if @bill_apportionment.save
-      redirect_to([@bill_apportionment.bill, @bill_apportionment], notice: 'Bill apportionment was successfully created.')
-    else
-      render action: 'new'
+    begin
+      @bill_apportionment = BillApportionment::Create.new(@bill, bill_apportionment_params).call()
+      redirect_to bill_bill_apportionment_path, notice: 'Bill apportionment was successfully created.'
+    rescue Exception => e
+      flash.now[:error] = e.message
+      @bill_apportionment = @bill.bill_apportionments.build(bill_apportionment_params)
+      #TODO: just dwellers from the right house
+      @dwellers = Dweller.all
+      render :new
     end
   end
 

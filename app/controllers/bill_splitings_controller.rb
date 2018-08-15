@@ -36,8 +36,6 @@ class BillSplitingsController < ApplicationController
       @dwellers = Dweller.all
       render :new
     end
-
-
   end
 
   # PUT bill_types/1/bill_splitings/1
