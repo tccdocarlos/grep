@@ -13,10 +13,6 @@ class BillTypesController < ApplicationController
   def show
   end
 
-  # GET /bill_types/1/split
-  def split
-  end
-
   # GET /bill_types/new
   def new
     @bill_type = BillType.new
@@ -36,8 +32,6 @@ class BillTypesController < ApplicationController
     
     params[:house_id] = House.first.id
     @bill_type = BillType::Create.new(responsible, params).call()
-
-    puts "############ #{@bill_type.name}"
 
     if @bill_type
       #redirect_to '/bill_types/'

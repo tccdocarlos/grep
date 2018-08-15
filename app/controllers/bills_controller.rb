@@ -82,7 +82,10 @@ class BillsController < ApplicationController
         #eval('new_params[:maturity_date] = params[:bill]["maturity_date(#{x}i)"].to_i ')
         eval('new_params.delete("maturity_date(#{x}i)")')
       end
-
+      string = nil
+      for x in (1..5) do
+        strings = "params[:bill]["paid_date(1i)"].to_i, "
+      end
       new_params[:paid_date] = DateTime.new(params[:bill]["paid_date(1i)"].to_i, 
                                             params[:bill]["paid_date(2i)"].to_i, 
                                             params[:bill]["paid_date(3i)"].to_i, 
