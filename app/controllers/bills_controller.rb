@@ -28,7 +28,7 @@ class BillsController < ApplicationController
       Bill::Create.new(new_bill_params).call
       redirect_to bills_path, notice: 'Bill was successfully created.'
     rescue Exception => e
-      flash[:error] = e.message
+      flash.now[:error] = e.message
       @bill = Bill.new(bill_params)
       render :new
     end
