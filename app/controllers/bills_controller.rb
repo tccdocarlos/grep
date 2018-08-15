@@ -24,17 +24,13 @@ class BillsController < ApplicationController
   # POST /bills
   # POST /bills.json
   def create
-
-    @bill_service = Bill::Create.new(new_bill_params).call
-
-    respond_to do |format|
-      if @bill_service
-        format.html { redirect_to @bill_service, notice: 'Bill was successfully created.' }
-        format.json { render :show, status: :created, location: @bill_service }
-      else
-        format.html { render :new }
-        format.json { render json: @bill_services, status: :unprocessable_entity }
-      end
+    begin
+      Bill::Create.new(new_bill_params).call
+      redirect_to bills_path, notice: 'Bill was successfully created.'
+    rescue Exception => e
+      flash[:error] = e.message
+      @bill = Bill.new(bill_params)
+      render :new
     end
   end
 
