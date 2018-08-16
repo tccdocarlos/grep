@@ -26,18 +26,17 @@ class BillTypesController < ApplicationController
   # POST /bill_types.json
   def create
     #FIXME
-    responsible = Dweller.first
-    
-    params = bill_type_params
-    
+    responsible = Dweller.first   
+    params = bill_type_params   
     params[:house_id] = House.first.id
-    @bill_type = BillType::Create.new(responsible, params).call()
 
-    if @bill_type
-      #redirect_to '/bill_types/'
-      redirect_to(bill_types_path(@bill_type), notice: 'Bill spliting was successfully created.')
-    else
-      render action: 'new'
+    begin
+      BillType::Create.new(responsible, params).call()
+      redirect_to bill_types_path, notice: 'Bill spliting was successfully created.'
+    rescue Exception => e
+      flash.now[:error] = e.message
+      @bill_type = BillType.new(bill_params)
+      render :new
     end
   end
 
