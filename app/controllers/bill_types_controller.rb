@@ -29,15 +29,13 @@ class BillTypesController < ApplicationController
     responsible = Dweller.first   
     params = bill_type_params   
     params[:house_id] = House.first.id
-
-    begin
-      BillType::Create.new(responsible, params).call()
-      redirect_to bill_types_path, notice: 'Bill spliting was successfully created.'
+    
+    BillType::Create.new(responsible, params).call()
+    redirect_to bill_types_path, notice: 'Bill spliting was successfully created.'
     rescue Exception => e
       flash.now[:error] = e.message
       @bill_type = BillType.new(bill_params)
       render :new
-    end
   end
 
   # PATCH/PUT /bill_types/1

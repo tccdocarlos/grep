@@ -26,16 +26,14 @@ class BillSplitingsController < ApplicationController
 
   # POST bill_types/1/bill_splitings
   def create
-    begin
       @bill_spliting = BillSpliting::Create.new(@bill_type, bill_spliting_params).call()
       redirect_to bill_type_bill_splitings_path, notice: 'Bill spliting was successfully created.'
-    rescue Exception => e
+    rescue => e
       flash.now[:error] = e.message
       @bill_spliting = @bill_type.bill_splitings.build(bill_spliting_params)
       #TODO: just dwellers from the right house
       @dwellers = Dweller.all
       render :new
-    end
   end
 
   # PUT bill_types/1/bill_splitings/1
