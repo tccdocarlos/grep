@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :bills do
     resources :bill_apportionments
   end  
-  resources :bill_months
+  #resources :bill_months
   resources :bill_types do
     resources :bill_splitings
   end

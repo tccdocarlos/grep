@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 2018_08_11_195002) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "month_bills", force: :cascade do |t|
+    t.date "month"
+    t.integer "status"
+    t.bigint "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_month_bills_on_house_id"
+  end
+
   add_foreign_key "bill_apportionments", "bills"
   add_foreign_key "bill_apportionments", "dwellers"
   add_foreign_key "bill_months", "houses"
