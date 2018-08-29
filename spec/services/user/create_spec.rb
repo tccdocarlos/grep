@@ -5,6 +5,7 @@ RSpec.describe User::Create do
   it 'should create a dweller after create a user' do
     s = User::Create.new(params).call
 
+    expect(User.count).to eq 1
     expect(Dweller.count).to eq 1
   end
 end

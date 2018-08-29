@@ -8,8 +8,9 @@ class User::Create
 
     if user.save
       user.create_dweller(name: user.email)
+      return user
     else
-      raise
+      raise("something was wrong")
     end
   end
 end
