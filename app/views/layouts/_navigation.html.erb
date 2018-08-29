@@ -43,6 +43,12 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
+    <% unless user_signed_in? %>
+      <%= link_to 'Log in', new_user_session_path, class: "btn btn-light" %>
+    <% else %>
+      <%= current_user.dweller.name %>
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-light" %>
+    <% end %>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="not working" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

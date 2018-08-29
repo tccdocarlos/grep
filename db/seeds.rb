@@ -9,4 +9,5 @@
 
 House.create(name: "rep vikings", description: "vida loka")
 Dweller.create(name: "carlos", house: House.first)
+User.create(email: "admin@admin.com", password: "123456", password_confirmation: "123456", dweller: Dweller.first)
 BillMonth.create(house: House.first, month: DateTime.now, status: 1)
