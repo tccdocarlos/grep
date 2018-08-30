@@ -1,6 +1,7 @@
 class BillApportionmentsController < ApplicationController
   before_action :set_bill_apportionments
   before_action :set_bill_apportionment, only: [:show, :edit, :update, :destroy]
+  before_action :require_living
 
   # GET bills/1/bill_apportionments
   def index

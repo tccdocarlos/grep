@@ -1,5 +1,6 @@
 class BillTypesController < ApplicationController
   before_action :set_bill_type, only: [:show, :edit, :update, :destroy, :split]
+  before_action :require_living
 
   # GET /bill_types
   # GET /bill_types.json

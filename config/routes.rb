@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :bill_types do
       resources :bill_splitings
     end
+    resources :houses, only: [:new, :create]
   end
 
   authenticated :user do

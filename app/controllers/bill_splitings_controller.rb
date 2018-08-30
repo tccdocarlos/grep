@@ -1,6 +1,7 @@
 class BillSplitingsController < ApplicationController
   before_action :set_bill_splitings
   before_action :set_bill_spliting, only: [:show, :edit, :update, :destroy]
+  before_action :require_living
 
   # GET bill_types/1/bill_splitings
   def index
