@@ -4,8 +4,7 @@ class BillTypesController < ApplicationController
   # GET /bill_types
   # GET /bill_types.json
   def index
-    @bill_types = BillType.all
-    @dwellers = Dweller.all
+    @bill_types = BillType.where('house_id = ?', current_user.dweller.house.id)
   end
 
   # GET /bill_types/1
@@ -25,16 +24,16 @@ class BillTypesController < ApplicationController
   # POST /bill_types
   # POST /bill_types.json
   def create
-    #FIXME
-    responsible = Dweller.first   
+    # REFACTOR BECAUSE IT CONSULTS A LOT OF DB
+    responsible = current_user.dweller  
     params = bill_type_params   
-    params[:house_id] = House.first.id
+    params[:house_id] = current_user.dweller.house.id
     
     BillType::Create.new(responsible, params).call()
-    redirect_to bill_types_path, notice: 'Bill spliting was successfully created.'
+    redirect_to bill_types_path, notice: 'Bill type was successfully created.'
     rescue Exception => e
       flash.now[:error] = e.message
-      @bill_type = BillType.new(bill_params)
+      @bill_type = BillType.new(bill_type_params)
       render :new
   end
 
