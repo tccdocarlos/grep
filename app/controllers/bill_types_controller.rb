@@ -4,6 +4,7 @@ class BillTypesController < ApplicationController
   # GET /bill_types
   # GET /bill_types.json
   def index
+    #FIX: IF USER DOESNT HAVE A HOUSE, IT GIVES AN ERROR
     @bill_types = BillType.where('house_id = ?', current_user.dweller.house.id)
   end
 
