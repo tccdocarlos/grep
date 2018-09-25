@@ -1,7 +1,7 @@
 class BillType < ApplicationRecord
   belongs_to :responsible, foreign_key: 'dweller_id', class_name: 'Dweller'
   belongs_to :house
-  has_many :bill_splitings, dependent: :destroy
+  has_many :bill_splitings, dependent: :destroy, inverse_of: :bill_type
   has_many :dwellers, through: :bill_splitings
   has_many :bills, dependent: :destroy
 

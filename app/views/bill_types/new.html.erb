@@ -6,7 +6,17 @@
 	<%#= f.input :house_id %>
 	<%#= f.input :maturity, as: :date %>
 	<%= f.input :value, as: :decimal %>
+
+  <div id="bill_splitings">
+    <%= f.simple_fields_for :bill_splitings do |bill_spliting| %>
+      <%= render 'bill_spliting_fields', f: bill_spliting %>
+    <% end %>
+  </div>
 	
+  <div class="links">
+    <%= link_to_add_association 'add bill spliting', f, :bill_splitings %>
+  </div>
+
 	<%= f.button :submit %>
 <% end %>
 

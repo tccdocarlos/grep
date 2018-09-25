@@ -1,0 +1,5 @@
+<div class="nested-fields">
+  <%= f.input :value %>
+  <%=  f.collection_select :dweller_id, @dwellers, :id, :name %>
+  <%= link_to_remove_association "remove experience", f %>
+</div>

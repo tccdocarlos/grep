@@ -17,6 +17,8 @@ class BillTypesController < ApplicationController
   # GET /bill_types/new
   def new
     @bill_type = BillType.new
+    @bill_splitings = @bill_type.bill_splitings.build
+    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
   end
 
   # GET /bill_types/1/edit
@@ -71,6 +73,6 @@ class BillTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_type_params
-      params.require(:bill_type).permit(:name, :description, :maturity, :value)
+      params.require(:bill_type).permit(:name, :description, :maturity, :value, bill_splitings_attributes: [:id, :value, :dweller_id, :_destroy])
     end
 end
