@@ -1,5 +1,7 @@
-<div class="nested-fields">
+<div class="nested-fields square">
   <%= f.input :value %>
+  <%= f.label :dweller %>
   <%= f.collection_select :dweller_id, @dwellers, :id, :name %>
-  <%= link_to_remove_association "remove experience", f %>
+  <%= link_to_remove_association "remove experience", f, class: "btn btn-primary" %>
 </div>
+<br>

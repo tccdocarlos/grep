@@ -7,6 +7,8 @@
 	<%#= f.input :maturity, as: :date %>
 	<%= f.input :value, as: :decimal %>
 
+  <h3>Bill Splitings</h3>
+
   <div id="bill_splitings">
     <%= f.simple_fields_for :bill_splitings do |bill_spliting| %>
       <%= render 'bill_spliting_fields', f: bill_spliting %>
@@ -14,7 +16,7 @@
   </div>
 	
   <div class="links">
-    <%= link_to_add_association 'add bill spliting', f, :bill_splitings %>
+    <%= link_to_add_association 'add bill spliting', f, :bill_splitings, class: "btn btn-primary float-right" %>
   </div>
 
 	<%= f.button :submit %>
