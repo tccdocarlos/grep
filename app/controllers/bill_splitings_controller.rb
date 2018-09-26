@@ -14,9 +14,7 @@ class BillSplitingsController < ApplicationController
 
   # GET bill_types/1/bill_splitings/new
   def new
-    
-    #TODO: just dwellers from the right house
-    @dwellers = Dweller.all
+    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
     
     @bill_spliting = @bill_type.bill_splitings.build
   end
