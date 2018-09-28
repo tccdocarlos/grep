@@ -12,11 +12,10 @@
   <tbody>
     <% @bill_types.each do |bill_type| %>
       <tr>
-        <td><%= bill_type.name %> </td>
-        <td><%= link_to 'Show', bill_type %></td>
-        <td><%= link_to 'Edit', edit_bill_type_path(bill_type) %></td>
-        <td><%= link_to 'Destroy', bill_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Split', new_bill_type_bill_spliting_path(bill_type) %></td>
+        <td><%= link_to bill_type.name , bill_type, class: "btn" %></td>
+        <td><%= link_to 'Edit', edit_bill_type_path(bill_type), class: "btn btn-primary float-right" %></td>
+        <td><%= link_to 'Destroy', bill_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Split', new_bill_type_bill_spliting_path(bill_type), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Bill Type', new_bill_type_path %>
+<%= link_to 'New Bill Type', new_bill_type_path, class: "btn btn-primary" %>
