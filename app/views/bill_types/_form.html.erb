@@ -1,17 +1,23 @@
-<%= form_with(model: bill_type, local: true) do |form| %>
-  <% if bill_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bill_type.errors.count, "error") %> prohibited this bill_type from being saved:</h2>
+<%= simple_form_for @bill_type do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-      <ul>
-      <% bill_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%#= f.input :maturity, as: :date %>
+  <%= f.input :value, as: :decimal %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <h3>Bill Splitings</h3>
+
+  <div id="bill_splitings">
+    <%= f.simple_fields_for :bill_splitings do |bill_spliting| %>
+      <%= render 'bill_spliting_fields', f: bill_spliting %>
+    <% end %>
   </div>
+  
+  <div class="links">
+    <%= link_to_add_association 'add bill spliting', f, :bill_splitings, class: "btn btn-primary float-right" %>
+  </div>
+
+  <%= f.button :submit %>
 <% end %>

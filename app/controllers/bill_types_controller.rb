@@ -23,6 +23,8 @@ class BillTypesController < ApplicationController
 
   # GET /bill_types/1/edit
   def edit
+    @bill_splitings = @bill_type.bill_splitings
+    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
   end
 
   # POST /bill_types
