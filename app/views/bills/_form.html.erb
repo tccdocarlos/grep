@@ -12,6 +12,16 @@
     <%= f.association :bill_type %>
   </div>
 
+   <div id="bill_apportionments">
+    <%= f.simple_fields_for :bill_apportionments do |bill_apportionment| %>
+      <%= render 'bill_apportionment_fields', f: bill_apportionment %>
+    <% end %>
+  </div>
+
+  <div class="links">
+    <%= link_to_add_association 'add bill apportionments', f, :bill_apportionments, class: "btn btn-primary float-right" %>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>

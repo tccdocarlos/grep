@@ -16,6 +16,8 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
+    @bill_apportionment = @bill.bill_apportionments.build
+    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
   end
 
   # GET /bills/1/edit
@@ -65,7 +67,7 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:paid_value, :month_value, :paid_date, :maturity_date, :bill_month_id, :bill_type_id)
+      params.require(:bill).permit(:paid_value, :month_value, :paid_date, :maturity_date, :bill_month_id, :bill_type_id, bill_apportionments_attributes: [:id, :value, :dweller_id, :_destroy])
     end
 
     #to convert dates to DateTime objects
