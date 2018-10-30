@@ -24,10 +24,10 @@
         <td><%= bill.maturity_date %></td>
         <td><%= bill.bill_month.status %></td>
         <td><%= bill.bill_type.name %></td>
-        <td><%= link_to 'Show', bill %></td>
-        <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-        <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Apportionmnet', new_bill_bill_apportionment_path(bill) %></td>
+        <td><%= link_to 'Show', bill, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_bill_path(bill), class: "btn btn-primary float-right" %></td>
+        <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td><%= link_to 'Apportionmnet', new_bill_bill_apportionment_path(bill), class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Bill', new_bill_path %>
+<%= link_to 'New Bill', new_bill_path, class: "btn btn-primary" %>
