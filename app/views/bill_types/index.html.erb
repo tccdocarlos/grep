@@ -15,7 +15,7 @@
         <td><%= link_to bill_type.name , bill_type, class: "btn" %></td>
         <td><%= link_to 'Edit', edit_bill_type_path(bill_type), class: "btn btn-primary float-right" %></td>
         <td><%= link_to 'Destroy', bill_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <td><%= link_to 'Split', new_bill_type_bill_spliting_path(bill_type), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Split', bill_type_bill_splitings_path(bill_type), class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>

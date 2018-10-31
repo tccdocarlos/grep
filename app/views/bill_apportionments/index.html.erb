@@ -12,14 +12,17 @@
 <% @bill_apportionments.each do |bill_apportionment| %>
   <tr>
     <td><%= bill_apportionment.value %></td>
-    <td><%= bill_apportionment.dweller %></td>
-    <td><%= link_to 'Show', [bill_apportionment.bill, bill_apportionment] %></td>
-    <td><%= link_to 'Edit', edit_bill_bill_apportionment_path(bill_apportionment.bill, bill_apportionment) %></td>
-    <td><%= link_to 'Destroy', [bill_apportionment.bill, bill_apportionment], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= bill_apportionment.dweller.name %></td>
+    <td><%= link_to 'Show', [bill_apportionment.bill, bill_apportionment], class: "btn btn-primary float-right" %></td>
+    <td><%= link_to 'Edit', edit_bill_bill_apportionment_path(bill_apportionment.bill, bill_apportionment), class: "btn btn-primary float-right" %></td>
+    <td><%= link_to 'Destroy', [bill_apportionment.bill, bill_apportionment], :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger float-right" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Bill apportionment', new_bill_bill_apportionment_path(params[:bill_id]) %>
+<%= link_to 'New Bill apportionment', new_bill_bill_apportionment_path(params[:bill_id]), class: "btn btn-primary" %>
+<div class="col-md-11 text-center">
+  <%= link_to 'Back', bills_path, class: "btn btn-warning text-center" %>
+</div>

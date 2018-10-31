@@ -20,14 +20,14 @@
       <tr>
         <td><%= bill.paid_value %></td>
         <td><%= bill.month_value %></td>
-        <td><%= bill.paid_date %></td>
-        <td><%= bill.maturity_date %></td>
+        <td><%= bill.paid_date.strftime('%a %d %b %Y') %></td>
+        <td><%= bill.maturity_date.strftime('%a %d %b %Y')  %></td>
         <td><%= bill.bill_month.status %></td>
         <td><%= bill.bill_type.name %></td>
         <td><%= link_to 'Show', bill, class: "btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_bill_path(bill), class: "btn btn-primary float-right" %></td>
         <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <td><%= link_to 'Apportionmnet', new_bill_bill_apportionment_path(bill), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Apportionmnet', bill_bill_apportionments_path(bill), class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
