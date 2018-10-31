@@ -16,12 +16,14 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = Bill.new
-    @bill_apportionment = @bill.bill_apportionments.build
+    @bill_apportionments = @bill.bill_apportionments.build
     @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
   end
 
   # GET /bills/1/edit
   def edit
+    @bill_apportionments = @bill.bill_apportionments.build
+    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
   end
 
   # POST /bills
