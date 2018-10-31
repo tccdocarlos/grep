@@ -17,11 +17,11 @@
       </li>-->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Bill Type
+          Cadastrar contas
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'All', bill_types_path, class: "dropdown-item"%>
-          <%= link_to 'New', new_bill_type_path, class: "dropdown-item" %>
+          <%= link_to 'Todas', bill_types_path, class: "dropdown-item"%>
+          <%= link_to 'Criar', new_bill_type_path, class: "dropdown-item" %>
           <!--<a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -29,11 +29,11 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Bill
+          Lançar contas
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'All', bills_path, class: "dropdown-item"%>
-          <%= link_to 'New', new_bill_path, class: "dropdown-item" %>
+          <%= link_to 'Todas', bills_path, class: "dropdown-item"%>
+          <%= link_to 'Criar', new_bill_path, class: "dropdown-item" %>
           <!--<a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -44,10 +44,10 @@
       </li>
     </ul>
     <% unless user_signed_in? %>
-      <%= link_to 'Log in', new_user_session_path, class: "btn btn-warning" %>
+      <%= link_to 'Entrar', new_user_session_path, class: "btn btn-warning" %>
     <% else %>
       <div> <%= current_user.dweller.name %> </div>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+      <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
     <% end %>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="not working" aria-label="Search">

@@ -1,9 +1,9 @@
-<h1>Listing bill_apportionments</h1>
+<h1>Rateio da conta</h1>
 
 <table>
   <tr>
-    <th>Value</th>
-    <th>Dweller</th>
+    <th>Valor</th>
+    <th>Morador</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,16 +13,16 @@
   <tr>
     <td><%= bill_apportionment.value %></td>
     <td><%= bill_apportionment.dweller.name %></td>
-    <td><%= link_to 'Show', [bill_apportionment.bill, bill_apportionment], class: "btn btn-primary float-right" %></td>
-    <td><%= link_to 'Edit', edit_bill_bill_apportionment_path(bill_apportionment.bill, bill_apportionment), class: "btn btn-primary float-right" %></td>
-    <td><%= link_to 'Destroy', [bill_apportionment.bill, bill_apportionment], :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger float-right" %></td>
+    <td><%= link_to 'Abrir', [bill_apportionment.bill, bill_apportionment], class: "btn btn-primary float-right" %></td>
+    <td><%= link_to 'Editar', edit_bill_bill_apportionment_path(bill_apportionment.bill, bill_apportionment), class: "btn btn-primary float-right" %></td>
+    <td><%= link_to 'Apagar', [bill_apportionment.bill, bill_apportionment], :confirm => 'Are you sure?', :method => :delete, class: "btn btn-danger float-right" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Bill apportionment', new_bill_bill_apportionment_path(params[:bill_id]), class: "btn btn-primary" %>
+<%= link_to 'Novo rateio', new_bill_bill_apportionment_path(params[:bill_id]), class: "btn btn-primary" %>
 <div class="col-md-11 text-center">
-  <%= link_to 'Back', bills_path, class: "btn btn-warning text-center" %>
+  <%= link_to 'Voltar', bills_path, class: "btn btn-warning text-center" %>
 </div>

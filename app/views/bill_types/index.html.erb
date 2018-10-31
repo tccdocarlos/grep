@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bill Types</h1>
+<h1>Contas cadastradas</h1>
 
 <table>
   <thead>
@@ -13,9 +13,9 @@
     <% @bill_types.each do |bill_type| %>
       <tr>
         <td><%= link_to bill_type.name , bill_type, class: "btn" %></td>
-        <td><%= link_to 'Edit', edit_bill_type_path(bill_type), class: "btn btn-primary float-right" %></td>
-        <td><%= link_to 'Destroy', bill_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
-        <td><%= link_to 'Split', bill_type_bill_splitings_path(bill_type), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Editar', edit_bill_type_path(bill_type), class: "btn btn-primary float-right" %></td>
+        <td><%= link_to 'Apagar', bill_type, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <td><%= link_to 'Dividir', bill_type_bill_splitings_path(bill_type), class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Bill Type', new_bill_type_path, class: "btn btn-primary" %>
+<%= link_to 'Cadastrar nova conta', new_bill_type_path, class: "btn btn-primary" %>
