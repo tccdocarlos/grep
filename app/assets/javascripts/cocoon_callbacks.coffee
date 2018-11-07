@@ -16,3 +16,6 @@ jQuery(document).on 'turbolinks:load', ->
     bill_apportionments.on 'cocoon:before-remove', (e, el_to_remove) ->
       $(this).data('remove-timeout', 1000);
       el_to_remove.fadeOut(1000);
+
+    bill_splitings.on 'focus', () -> 
+      console.log("foi focado");

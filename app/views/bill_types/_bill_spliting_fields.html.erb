@@ -1,5 +1,10 @@
 <div class="nested-fields square">
-  <%= f.input :value %>
+  <%= f.label :value %>
+  <input type="radio" name="valor" value="ativado" id="radio_value"> Ativar<br>
+  <%= f.input :value, input_html: {id: "bill_spliting_value"}, label: false %>
+  <%= f.label :percentage_value %>
+  <input type="radio" name="valor" value="ativado" id="radio_percentage_value"> Ativar<br>
+  <%= f.input :percentage_value, input_html: {id: "bill_spliting_percentage_value"}, label: false %>
   <%= f.label :dweller %>
   <%= f.collection_select :dweller_id, @dwellers, :id, :name %>
   <%= link_to_remove_association "remover divisão de conta", f, class: "btn btn-danger" %>
