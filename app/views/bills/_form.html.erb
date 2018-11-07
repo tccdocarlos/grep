@@ -4,12 +4,12 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.association :bill_type, collection: @bill_type %>
     <%= f.input :paid_value %>   
     <%#= f.input :month_value %>
     <%= f.input :paid_date %>
     <%= f.input :maturity_date %>
-    <%= f.association :bill_month %>
-    <%= f.association :bill_type %>
+    <%= f.association :bill_month %> 
   </div>
 
    <div id="bill_apportionments">

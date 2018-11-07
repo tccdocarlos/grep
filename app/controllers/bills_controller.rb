@@ -15,9 +15,11 @@ class BillsController < ApplicationController
 
   # GET /bills/new
   def new
+    house_id = current_user.dweller.house.id
     @bill = Bill.new
     @bill_apportionments = @bill.bill_apportionments.build
-    @dwellers = Dweller.where("house_id = ?", current_user.dweller.house.id)
+    @dwellers = Dweller.where("house_id = ?", house_id)
+    @bill_type = BillType.where("house_id = ?", house_id)
   end
 
   # GET /bills/1/edit
