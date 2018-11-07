@@ -9,7 +9,7 @@
     <%#= f.input :month_value %>
     <%= f.input :paid_date, as: :date, html5: true %>
     <%= f.input :maturity_date, as: :date, html5: true %>
-    <%= f.association :bill_month %> 
+    <%= f.association :bill_month, label_method: :status, as: :radio_buttons %> 
   </div>
 
    <div id="bill_apportionments">
